@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Products - Leah Marcelino</title>
+
+    <style>
+        /* =========================
+           RESET & GLOBAL
+        ========================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f4e8;
+            color: #063b29;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           HEADER & NAV
+        ========================= */
+        header {
+            background: #d4a64f;
+            padding: 1rem clamp(1.5rem, 5vw, 4rem);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+          .nav-music-toggle {
+            background: none;
+            border: none;
+            outline: none;
+            padding: .5rem;
+            cursor: pointer;
+            color:#2d4a3e;
+            /* Controls SVG color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin: 0;
+        }
+
+        .nav-music-toggle:hover {
+            transform: scale(1.1);
+            opacity: 0.85;
+            background: transparent;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .ul-musicBtn-container {
+            display: flex;
+            flex-direction: row;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        
+        .container{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+          
+    
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+        }
+
+        .products-logo img{
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #063b29;
+            color: #f8edc9;
+            display: grid;
+            place-items: center;
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+        }
+
+        .logo-name {
+            font-size: 1.1rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        nav a {
+            color: #111;
+            text-decoration: none;
+            font-size: .95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            font-weight: bold;
+        }
+
+        .about,
+        .contact,
+        .product{
+            display: none;
+        }
+
+       .home{
+            display: flex;
+            flex-direction: row;
+            font-size:  clamp(0.9063rem, 0.8661rem + 0.1786vw, 1rem);
+            gap: .2rem;
+            width: 100%;
+        }
+
+        .home::after{
+            content:'>';
+            width: 10px;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+        .products-hero {
+            background: #d4a64f;
+            text-align: center;
+            padding: clamp(3rem, 6vw, 5rem) 1rem;
+        }
+
+        .small-title {
+            font-family: Georgia, serif;
+            letter-spacing: .25rem;
+            font-size: .85rem;
+            margin-bottom: 1rem;
+        }
+
+        .products-hero h1 {
+            font-family: Georgia, serif;
+            color: #111;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .products-hero p {
+            max-width: 550px;
+            margin-inline: auto;
+            line-height: 1.7;
+        }
+
+           .background-btn-container{
+            display: none;
+            padding: 1rem 1rem 1rem 0;
+            justify-content: flex-end;
+        }
+
+        .music-toggle {
+            background: none;
+            border: none;
+            outline: none;
+            padding: .5rem;
+            cursor: pointer;
+            color: #2d4a3e; 
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            background: transparent;
+        }
+
+        .music-icon:hover {
+            transform: scale(1.1);
+            opacity: 0.85;
+            background: transparent;
+            }
+
+        /* =========================
+           PRODUCTS GRID
+        ========================= */
+        .products-container {
+            max-width: 1100px;
+            margin-inline: auto;
+            padding: clamp(3rem, 6vw, 5rem) 1.5rem;
+            flex-grow: 1;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: #fffdf5;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1fr solid #e2dac8;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #e2dac8;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-family: Georgia, serif;
+            font-size: 1.35rem;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #063b29;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .btn-order {
+            display: block;
+            text-align: center;
+            background: #063b29;
+            color: #fff8dc;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
+        }
+
+        .btn-order:hover {
+            background: #0b5138;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            background: #042b1d;
+            color: #fff8dc;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: .85rem;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media (max-width: 900px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+         @media (max-width: 768px) {
+             .nav-background-btn-container{
+                display: none;
+            }
+
+            .background-btn-container{
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .products-hero{
+                padding: 0rem 1rem 6rem;
+            }
+
+            header{
+                padding:1rem;
+            }
+        }
+
+        
+
+        @media (max-width: 600px) {
+            nav {
+                gap: .8rem;
+            }
+
+            nav a {
+                font-size: .8rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+             header{
+                padding: 1rem .5rem;
+              }
+
+                .background-btn-container{
+                    padding: .5rem;
+                }
+        }
+
+            @media(max-width: 450px) {
+              header{
+                padding: 1rem .1rem;
+              }
+
+                .background-btn-container{
+                    padding: .1rem;
+                }
+            }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="nav">
+            <div class="container">
+                <div class="logo-container">
+                    <div class="products-logo">
+                        <img src="../images/removeBGLogo.webp" alt="logo">
+                    </div>
+                    <span class="logo-name">Leah Marcelino</span>
+                </div>
+                    <div class="ul-musicBtn-container">
+                    <nav>
+                        <a class="home" href="../index.html">Home</a>
+                        <a class="about" href="about.html">About</a>
+                        <a class="contact" href="contact.html">Contact</a>
+                    </nav>
+
+                    <div class="nav-background-btn-container">
+                        <button class="nav-music-toggle" id="nav-musicToggle" aria-label="Toggle background music">
+                            <svg class="nav-music-icon" id="nav-musicIconOn" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                            </svg>
+
+
+                            <svg class="nav-music-icon hidden" id="nav-musicIconOff" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                                <path d="M9 9l2 2v8l-5-4H2V9h4l2.5-2"></path>
+                                <path d="M11 5l2 1.6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="products-hero">
+              <div class="background-btn-container">
+                <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
+
+                    <svg class="music-icon" id="musicIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                    </svg>
+
+
+                    <svg class="music-icon hidden" id="musicIconOff" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                        <path d="M9 9l2 2v8l-5-4H2V9h4l2.5-2"></path>
+                        <path d="M11 5l2 1.6"></path>
+                    </svg>
+                </button>
+            </div>
+            <p class="small-title">FRESHLY BAKED DAILY</p>
+            <h1>Our Homemade Delights</h1>
+            <p>Made with quality ingredients, simple recipes, and lots of love.</p>
+        </section>
+
+        <!-- PRODUCTS SECTION -->
+        <section class="products-container">
+            <div class="product-grid">
+
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="../images/isi-pic.webp" alt="Fresh Ring Biscuits" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Ring Biscuits</h2>
+                        <div class="product-price">₱120 / pack</div>
+                        <p class="product-description">
+                            Golden, crispy, and baked to perfection. A classic homemade favorite that pairs perfectly with hot coffee or tea.
+                        </p>
+                        <a href="https://m.me/leah.marcelino.900" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" class="btn-order">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="../images/sugaryDonuts.webp" alt="Soft Homemade Donuts" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Soft Donuts</h2>
+                        <div class="product-price">₱150 / box (6 pcs)</div>
+                        <p class="product-description">
+                            Freshly fried and lightly dusted with sugar. Soft on the inside with just the right amount of sweetness in every bite.
+                        </p>
+                        <a href="https://m.me/leah.marcelino.900" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" class="btn-order">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="../images/puto-image.webp" alt="Traditional Merienda" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Specia Puto with Cheese</h2>
+                        <div class="product-price">₱100 / portion</div>
+                        <p class="product-description">
+                            Traditional recipes prepared with love. Perfect for afternoon snack time with family and friends.
+                        </p>
+                        <a href="https://m.me/leah.marcelino.900" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" class="btn-order">Order Now</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Leah Marcelino · Made With Care</p>
+    </footer>
+
+     <script>
+             const music = new Audio('../audio/leniGarret.mp3');
+        music.loop = true;
+        music.volume = 0.1;
+        const musicBtn = document.querySelector('.music-toggle');
+        const navMusicBtn = document.querySelector('.nav-music-toggle');
+        const musicIconOn = document.getElementById('musicIconOn');
+        const musicIconOff = document.getElementById('musicIconOff');
+        const navMusicIconOn = document.getElementById('nav-musicIconOn');
+        const navMusicIconOff = document.getElementById('nav-musicIconOff');
+
+
+        const savedTime = localStorage.getItem('bgMusicTime');
+        if (savedTime) {
+        music.currentTime = parseFloat(savedTime);
+        }
+
+        music.addEventListener('timeupdate', () => {
+            localStorage.setItem('bgMusicTime', music.currentTime);
+            });
+
+        function startAudioOnInteraction() {
+            music.play().then(() => {
+            
+            window.removeEventListener('click', startAudioOnInteraction);
+            window.removeEventListener('scroll', startAudioOnInteraction);
+            }).catch((error) => {
+            console.log("Autoplay prevented:", error);
+            });
+        }
+
+        window.addEventListener('click', startAudioOnInteraction);
+        window.addEventListener('scroll', startAudioOnInteraction);
+
+    
+
+        function pauseBtn(e) {
+        e.stopPropagation(); 
+
+        if (!music.paused) {
+            // If playing -> pause it
+            music.pause();
+            if (musicIconOn && musicIconOff) {
+            musicIconOn.classList.add('hidden');
+            musicIconOff.classList.remove('hidden');
+            }
+        } else {
+            // If paused -> play it
+            music.play().then(() => {
+            if (musicIconOn && musicIconOff) {
+                musicIconOn.classList.remove('hidden');
+                musicIconOff.classList.add('hidden');
+            }
+            }).catch((err) => console.log("Playback error:", err));
+        }
+        }
+
+        if (musicBtn) {
+        musicBtn.addEventListener('click', pauseBtn);
+        }
+
+        function navPauseBtn(e) {
+        e.stopPropagation();
+
+        if (!music.paused) {
+            // If playing -> pause it
+            music.pause();
+            if (navMusicIconOn && navMusicIconOff) {
+            navMusicIconOn.classList.add('hidden');
+            navMusicIconOff.classList.remove('hidden');
+            }
+        } else {
+            // If paused -> play it
+            music.play().then(() => {
+            if (navMusicIconOn && navMusicIconOff) {
+                navMusicIconOn.classList.remove('hidden');
+                navMusicIconOff.classList.add('hidden');
+            }
+            }).catch((err) => console.log("Playback error:", err));
+        }
+        }
+
+        if (navMusicBtn) {
+        navMusicBtn.addEventListener('click', navPauseBtn);
+        }
+     </script>
+
+
+</body>
+</html>

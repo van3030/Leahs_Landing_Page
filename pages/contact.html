@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Contact Me - Leah Marcelino</title>
+    <style>
+        /* =========================
+   RESET
+========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: #f8f4e8;
+
+            color: #063b29;
+        }
+
+
+        /* =========================
+   HEADER
+========================= */
+
+        header {
+            background: #d4a64f;
+
+            padding: 1rem clamp(1.5rem, 5vw, 4rem);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-music-toggle {
+            background: none;
+            border: none;
+            outline: none;
+            padding: .5rem;
+            cursor: pointer;
+            color:#2d4a3e;
+            /* Controls SVG color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin: 0;
+        }
+
+        .nav-music-toggle:hover {
+            transform: scale(1.1);
+            opacity: 0.85;
+            background: transparent;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .ul-musicBtn-container {
+            display: flex;
+            flex-direction: row;
+            gap: 5rem;
+            align-items: center;
+        }
+
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+
+            align-items: center;
+
+            gap: .7rem;
+        }
+
+        .logo {
+            width: auto;
+            height: auto;
+        }
+
+
+        .contact-logo img {
+            width: 100%;
+            height: auto;
+            max-width: clamp(2rem, 1.8661rem + 0.5952vw, 2.3rem);
+            border-radius: 50%;
+            background: #063b29;
+            color: #f8edc9;
+            display: grid;
+            place-items: center;
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+        }
+
+        nav {
+            display: flex;
+
+            gap: 1.8rem;
+        }
+
+        nav a {
+            color: #111;
+
+            text-decoration: none;
+
+            font-size: .95rem;
+        }
+
+        .contact,
+        .about {
+            display: none;
+        }
+
+
+        .home {
+            display: flex;
+            flex-direction: row;
+            font-size: clamp(0.9063rem, 0.8661rem + 0.1786vw, 1rem);
+            gap: .2rem;
+            width: 100%;
+        }
+
+        .home::after {
+            content: '>';
+            width: 10px;
+        }
+
+
+        /* =========================
+   CONTACT HERO
+========================= */
+
+        .contact-hero {
+            background: #d4a64f;
+
+            text-align: center;
+
+            padding: clamp(4rem, 8vw, 7rem) 1rem;
+        }
+
+        .contact-hero>p:first-child {
+            font-family: Georgia, serif;
+
+            letter-spacing: .25rem;
+
+            font-size: .85rem;
+
+            margin-bottom: 1rem;
+        }
+
+        .contact-hero h1 {
+            font-family: Georgia, serif;
+
+            color: #111;
+
+            font-size: clamp(2.5rem, 5vw, 4rem);
+
+            margin-bottom: 1rem;
+        }
+
+        .contact-hero>p:last-child {
+            max-width: 550px;
+
+            margin-inline: auto;
+
+            line-height: 1.7;
+        }
+
+         .background-btn-container{
+            display: none;
+            padding: 1rem 1rem 1rem 0;
+            justify-content: flex-end;
+        }
+
+        .music-toggle {
+            background: none;
+            border: none;
+            outline: none;
+            padding: .5rem;
+            cursor: pointer;
+            color: #2d4a3e; 
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            background: transparent;
+        }
+
+        .music-icon:hover {
+            transform: scale(1.1);
+            opacity: 0.85;
+            background: transparent;
+            }
+
+
+        /* =========================
+   CONTACT SECTION
+========================= */
+
+        .contact-section {
+            width: min(100% - 2rem, 950px);
+
+            margin-inline: auto;
+
+            padding: clamp(4rem, 8vw, 6rem) 0;
+
+            display: grid;
+
+            grid-template-columns: .8fr 1.2fr;
+
+            gap: clamp(2rem, 6vw, 5rem);
+
+            align-items: start;
+        }
+
+
+        /* =========================
+   CONTACT INFO
+========================= */
+
+        .contact-info h2,
+        .contact-form h2 {
+            font-family: Georgia, serif;
+
+            color: #111;
+
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info>p {
+            line-height: 1.7;
+
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .info-item strong {
+            display: block;
+
+            margin-bottom: .25rem;
+        }
+
+
+        /* =========================
+   Messenger Card
+========================= */
+
+        .messenger-card {
+            background-color: #fdfbf7;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 450px;
+            text-align: center;
+            font-family: inherit;
+            justify-self: center;
+        }
+
+        .messenger-card h2 {
+            font-size: 2rem;
+            color: #0b1d12;
+            margin-bottom: 0.5rem;
+        }
+
+        .messenger-card p {
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .messenger-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #0084ff;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s ease;
+        }
+
+        .messenger-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* =========================
+   FOOTER
+========================= */
+
+        footer {
+            background: #042b1d;
+
+            color: #fff8dc;
+
+            text-align: center;
+
+            padding: 2rem;
+
+            font-size: .85rem;
+        }
+
+
+        /* =========================
+   RESPONSIVE
+========================= */
+
+        @media (max-width: 768px) {
+
+            header{
+                padding: 1rem;
+            }
+
+            nav {
+                gap: .8rem;
+            }
+
+            nav a {
+                font-size: .8rem;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+
+            }
+
+             .nav-background-btn-container{
+                display: none;
+            }
+
+            .background-btn-container{
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .contact-hero{
+                padding: 0rem 1rem 6rem;
+            }
+        }
+
+        
+            @media(max-width: 600px) {
+              header{
+                padding: 1rem .5rem;
+              }
+
+                .background-btn-container{
+                    padding: .5rem;
+                }
+            }
+
+            @media(max-width: 450px) {
+              header{
+                padding: 1rem .1rem;
+              }
+
+                .background-btn-container{
+                    padding: .1rem;
+                }
+            }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="nav">
+            <div class="container">
+                <div class="logo-container">
+                    <div class="logo">
+                        <div class="contact-logo">
+                            <img src="../images/removeBGLogo.webp" alt="logo">
+                        </div>
+                    </div>
+                    <span class="logo-name">Leah Marcelino</span>
+                </div>
+                <div class="ul-musicBtn-container">
+                    <nav>
+                        <a class="home" href="../index.html">Home</a>
+                        <a class="about" href="about.html">About</a>
+                        <a class="contact" href="contact.html">Contact</a>
+                    </nav>
+
+                    <div class="nav-background-btn-container">
+                        <button class="nav-music-toggle" id="nav-musicToggle" aria-label="Toggle background music">
+                            <svg class="nav-music-icon" id="nav-musicIconOn" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                            </svg>
+
+
+                            <svg class="nav-music-icon hidden" id="nav-musicIconOff" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                                <path d="M9 9l2 2v8l-5-4H2V9h4l2.5-2"></path>
+                                <path d="M11 5l2 1.6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+    <main>
+        <!-- CONTACT HERO -->
+        <section class="contact-hero">
+            <div class="background-btn-container">
+                <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
+
+                    <svg class="music-icon" id="musicIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                    </svg>
+
+
+                    <svg class="music-icon hidden" id="musicIconOff" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                        <path d="M9 9l2 2v8l-5-4H2V9h4l2.5-2"></path>
+                        <path d="M11 5l2 1.6"></path>
+                    </svg>
+                </button>
+            </div>
+            <p>GET IN TOUCH</p>
+            <h1>Contact Us</h1>
+            <p>
+                Have a question about my homemade treats or want to place an order?
+                Send a message and I'll get back to you as soon as possible!
+            </p>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact-section">
+
+            <!-- CONTACT INFO -->
+            <div class="contact-info">
+                <h2>Reach Out</h2>
+                <p>
+                    I love to hear from you. Feel free to contact me through any of the
+                    details below.
+                </p>
+
+                <div class="info-item">
+                    <strong>Phone</strong>
+                    <span>+63 9497377451</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>Location</strong>
+                    <span>121 Sto. Nino St. Brgy. Laniwan Palapag Northern Samar</span>
+                </div>
+            </div>
+
+            <div class="messenger-card">
+                <h2>Send a Message</h2>
+                <p>Have questions or want to make an inquiry? Chat with us directly on Facebook Messenger!</p>
+
+                <a href="https://m.me/leah.marcelino.900" target="_blank" class="messenger-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.45 5.516 3.716 7.218V22l3.351-1.84c.937.26 1.928.402 2.933.402 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.066 12.427l-2.55-2.72-4.975 2.72 5.474-5.812 2.613 2.72 4.912-2.72-5.474 5.812z" />
+                    </svg>
+                    Chat on Messenger
+                </a>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Leah Marcelino · Made With Care</p>
+    </footer>
+
+    <script>
+          const music = new Audio('../audio/leniGarret.mp3');
+        music.loop = true;
+        music.volume = 0.1;
+        const musicBtn = document.querySelector('.music-toggle');
+        const navMusicBtn = document.querySelector('.nav-music-toggle');
+        const musicIconOn = document.getElementById('musicIconOn');
+        const musicIconOff = document.getElementById('musicIconOff');
+        const navMusicIconOn = document.getElementById('nav-musicIconOn');
+        const navMusicIconOff = document.getElementById('nav-musicIconOff');
+
+
+        const savedTime = localStorage.getItem('bgMusicTime');
+        if (savedTime) {
+        music.currentTime = parseFloat(savedTime);
+        }
+
+        music.addEventListener('timeupdate', () => {
+            localStorage.setItem('bgMusicTime', music.currentTime);
+            });
+
+        function startAudioOnInteraction() {
+            music.play().then(() => {
+            
+            window.removeEventListener('click', startAudioOnInteraction);
+            window.removeEventListener('scroll', startAudioOnInteraction);
+            }).catch((error) => {
+            console.log("Autoplay prevented:", error);
+            });
+        }
+
+        window.addEventListener('click', startAudioOnInteraction);
+        window.addEventListener('scroll', startAudioOnInteraction);
+
+    
+
+        function pauseBtn(e) {
+        e.stopPropagation(); 
+
+        if (!music.paused) {
+            // If playing -> pause it
+            music.pause();
+            if (musicIconOn && musicIconOff) {
+            musicIconOn.classList.add('hidden');
+            musicIconOff.classList.remove('hidden');
+            }
+        } else {
+            // If paused -> play it
+            music.play().then(() => {
+            if (musicIconOn && musicIconOff) {
+                musicIconOn.classList.remove('hidden');
+                musicIconOff.classList.add('hidden');
+            }
+            }).catch((err) => console.log("Playback error:", err));
+        }
+        }
+
+        if (musicBtn) {
+        musicBtn.addEventListener('click', pauseBtn);
+        }
+
+        function navPauseBtn(e) {
+        e.stopPropagation();
+
+        if (!music.paused) {
+            // If playing -> pause it
+            music.pause();
+            if (navMusicIconOn && navMusicIconOff) {
+            navMusicIconOn.classList.add('hidden');
+            navMusicIconOff.classList.remove('hidden');
+            }
+        } else {
+            // If paused -> play it
+            music.play().then(() => {
+            if (navMusicIconOn && navMusicIconOff) {
+                navMusicIconOn.classList.remove('hidden');
+                navMusicIconOff.classList.add('hidden');
+            }
+            }).catch((err) => console.log("Playback error:", err));
+        }
+        }
+
+        if (navMusicBtn) {
+        navMusicBtn.addEventListener('click', navPauseBtn);
+        }
+        
+    </script>
+
+
+</body>
+
+</html>

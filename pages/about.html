@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>About - Leah Marcelino</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #063b29;
+            background: #f8f4e8;
+        }
+
+        header {
+            
+            background: #d4a64f;
+            padding: 1rem 1.5rem;
+    
+        }
+
+        .container{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+         }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+    
+        }
+
+        .nav-music-toggle {
+            background: none;
+            border: none;
+            outline: none;
+            padding: .5rem;
+            cursor: pointer;
+            color: var(--clr-forest-btn); /* Controls SVG color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin: 0;
+            }
+
+        .nav-music-toggle:hover {
+            transform: scale(1.1);
+            opacity: 0.85;
+            }
+
+        .hidden{
+            display: none;
+        }
+
+        .ul-musicBtn-container{
+            display: flex;
+            flex-direction: row;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+        }
+
+        .contact,
+        .about{
+            display: none;
+        }
+
+        .home{
+             display: flex;
+             flex-direction: row;
+             font-size:  clamp(0.9063rem, 0.8661rem + 0.1786vw, 1rem);
+             gap: .2rem;
+             width: 100%;
+         }
+
+        .home::after{
+             content: '>';
+             width: 10px;
+        }
+
+        .about-logo img{
+            width: 100%;
+            height: auto;
+            max-width: clamp(2rem,  1.8661rem + 0.5952vw, 2.3rem);
+            border-radius: 50%;
+            background: #063b29;
+            color: #f8edc9;
+            display: grid;
+            place-items: center;
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+        }
+
+        .logo span{
+            
+            font-family: var(--font-montserrat);
+            font-weight: var(--fw-medium);
+            color: var(--clr-forest-darker);
+            font-size: var(--fz-lg);
+            letter-spacing: .5px;
+            font-size: clamp(.8rem, 14px + 0.4vw, var(--fz-lg));
+        }
+        
+
+        .logo-name {
+            font-size: 1.1rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        nav a {
+            color: #111;
+            text-decoration: none;
+            font-size: .95rem;
+        }
+
+
+        /* ABOUT HERO */
+
+        .background-btn-container{
+            display: none;
+            padding: 1rem 1rem 4rem 0;
+            justify-content:flex-end;
+        }
+
+        .music-toggle {
+            background: none;
+            border: none;
+            outline: none;
+            padding: .5rem;
+            cursor: pointer;
+            color:#2d4a3e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            opacity: 0.85;
+            }
+
+        .about-hero {
+            background: #d4a64f;
+            text-align: center;
+            padding: 4rem 1rem 6rem;
+        }
+
+        .small-title {
+            font-family: Georgia, serif;
+            letter-spacing: .25rem;
+            font-size: .85rem;
+            margin-bottom: 1rem;
+        }
+
+
+        .about-hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: #111;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-hero p {
+            max-width: 600px;
+            margin-inline: auto;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* STORY */
+
+        .story {
+            max-width: 950px;
+            margin-inline: auto;
+            padding: 5rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .story-image {
+            text-align: center;
+        }
+
+        .story-image img {
+            width: min(100%, 330px);
+            border-radius: 50%;
+            border: 5px solid #063b29;
+            padding: 7px;
+            background: #f8edc9;
+        }
+
+        .story-text{
+            text-align: center;
+        }
+
+        .story-text h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #111;
+            margin-bottom: 1rem;
+            
+        }
+
+        .story-text p {
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* VALUES */
+
+        .values {
+            background: #063b29;
+            color: #fff8dc;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .values h2 {
+            font-family: Georgia, serif;
+            font-size: 2.3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .value-grid {
+            max-width: 900px;
+            margin-inline: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .value h3 {
+            font-family: Georgia, serif;
+            margin-bottom: .7rem;
+        }
+
+        .value p {
+            font-size: .9rem;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #042b1d;
+            color: #fff8dc;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: .85rem;
+        }
+
+        @media (max-width: 768px) {
+
+
+
+            nav a {
+                font-size: .8rem;
+            }
+
+            .story {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-background-btn-container{
+                display: none;
+            }
+
+            .background-btn-container{
+                display: flex;
+            }
+
+            .about-hero{
+                padding: 0rem 1rem 6rem;
+            }
+
+        }
+
+            @media(max-width: 600px) {
+              header{
+                padding: 1rem .5rem;
+              }
+
+                .background-btn-container{
+                    padding: .5rem;
+                }
+            }
+
+            @media(max-width: 450px) {
+              header{
+                padding: 1rem .1rem;
+              }
+
+                .background-btn-container{
+                    padding: .1rem;
+                }
+            }
+
+
+
+     
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav">
+            <div class="container">
+                <div class="logo">
+                    <div class="about-logo">
+                    <img src="../images/removeBGLogo.webp" alt="logo">
+                    </div>
+                    <span class="logo-name">Leah Marcelino</span>
+                </div>
+
+                <div class="ul-musicBtn-container">
+                    <nav>
+                    <a class="home" href="../index.html">Home</a>
+                    <a class="about" href="about.html">About</a>
+                    <a class="contact" href="contact.html">Contact</a>
+                </nav>
+
+                  <div class="nav-background-btn-container">
+                    <button class="nav-music-toggle" id="nav-musicToggle" aria-label="Toggle background music">
+                        <svg class="nav-music-icon" id="nav-musicIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                        </svg>
+
+                
+                        <svg class="nav-music-icon hidden" id="nav-musicIconOff" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                            <path d="M9 9l2 2v8l-5-4H2V9h4l2.5-2"></path>
+                            <path d="M11 5l2 1.6"></path>
+                        </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </header>
+
+
+    <main>
+
+        <section class="about-hero">
+          <div class="background-btn-container">
+            <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
+            
+                <svg class="music-icon" id="musicIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+
+        
+                <svg class="music-icon hidden" id="musicIconOff" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                    <path d="M9 9l2 2v8l-5-4H2V9h4l2.5-2"></path>
+                    <path d="M11 5l2 1.6"></path>
+                </svg>
+            </button>
+            </div>
+            <p class="small-title">MY STORY</p>
+
+            <h1>Made With Love</h1>
+
+            <p>
+                Every batch is made with care, using simple and quality
+                ingredients to create delicious treats for every occasion.
+            </p>
+        </section>
+
+
+        <section class="story">
+
+            <div class="story-image">
+                <!-- Change this to your actual image -->
+                <img src="../images/leahsAboutPic.webp" alt="Leah preparing food">
+            </div>
+
+            <div class="story-text">
+                <h2>A Little About Me</h2>
+
+                <p>
+                    What I started with a simple love for homemade treats
+                    became something we wanted to share with our community.
+                </p>
+
+                <p>
+                    From freshly baked ring biscuits to soft donuts and
+                    traditional merienda, every product is prepared with
+                    care and attention to detail.
+                </p>
+
+                <p>
+                    My goal is simple — delicious food, made with love,
+                    and shared with the people around us.
+                </p>
+            </div>
+
+        </section>
+
+
+        <section class="values">
+
+            <h2>What We Believe</h2>
+
+            <div class="value-grid">
+
+                <div class="value">
+                    <h3>Fresh</h3>
+                    <p>
+                        We prepare our products with fresh ingredients
+                        and careful preparation.
+                    </p>
+                </div>
+
+                <div class="value">
+                    <h3>Simple</h3>
+                    <p>
+                        Good food doesn't need to be complicated.
+                        Simple ingredients can create something special.
+                    </p>
+                </div>
+
+                <div class="value">
+                    <h3>Made With Love</h3>
+                    <p>
+                        Every product is prepared with care and
+                        shared with the people we love.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 Leah Marcelino · Made With Care</p>
+    </footer>
+
+    <script>
+        const music = new Audio('../audio/leniGarret.mp3');
+        music.loop = true;
+        music.volume = 0.1;
+        const musicBtn = document.querySelector('.music-toggle');
+        const navMusicBtn = document.querySelector('.nav-music-toggle');
+        const musicIconOn = document.getElementById('musicIconOn');
+        const musicIconOff = document.getElementById('musicIconOff');
+        const navMusicIconOn = document.getElementById('nav-musicIconOn');
+        const navMusicIconOff = document.getElementById('nav-musicIconOff');
+
+
+        const savedTime = localStorage.getItem('bgMusicTime');
+        if (savedTime) {
+        music.currentTime = parseFloat(savedTime);
+        }
+
+        music.addEventListener('timeupdate', () => {
+            localStorage.setItem('bgMusicTime', music.currentTime);
+            });
+
+        function startAudioOnInteraction() {
+            music.play().then(() => {
+            
+            window.removeEventListener('click', startAudioOnInteraction);
+            window.removeEventListener('scroll', startAudioOnInteraction);
+            }).catch((error) => {
+            console.log("Autoplay prevented:", error);
+            });
+        }
+
+        window.addEventListener('click', startAudioOnInteraction);
+        window.addEventListener('scroll', startAudioOnInteraction);
+
+    
+
+        function pauseBtn(e) {
+        e.stopPropagation(); 
+
+        if (!music.paused) {
+            // If playing -> pause it
+            music.pause();
+            if (musicIconOn && musicIconOff) {
+            musicIconOn.classList.add('hidden');
+            musicIconOff.classList.remove('hidden');
+            }
+        } else {
+            // If paused -> play it
+            music.play().then(() => {
+            if (musicIconOn && musicIconOff) {
+                musicIconOn.classList.remove('hidden');
+                musicIconOff.classList.add('hidden');
+            }
+            }).catch((err) => console.log("Playback error:", err));
+        }
+        }
+
+        if (musicBtn) {
+        musicBtn.addEventListener('click', pauseBtn);
+        }
+
+        function navPauseBtn(e) {
+        e.stopPropagation();
+
+        if (!music.paused) {
+            // If playing -> pause it
+            music.pause();
+            if (navMusicIconOn && navMusicIconOff) {
+            navMusicIconOn.classList.add('hidden');
+            navMusicIconOff.classList.remove('hidden');
+            }
+        } else {
+            // If paused -> play it
+            music.play().then(() => {
+            if (navMusicIconOn && navMusicIconOff) {
+                navMusicIconOn.classList.remove('hidden');
+                navMusicIconOff.classList.add('hidden');
+            }
+            }).catch((err) => console.log("Playback error:", err));
+        }
+        }
+
+        if (navMusicBtn) {
+        navMusicBtn.addEventListener('click', navPauseBtn);
+        }
+
+    </script>
+
+</body>
+</html>

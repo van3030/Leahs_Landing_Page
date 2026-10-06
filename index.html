@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Leahs Landing Page</title>
+</head>
+<body>
+
+  <!-- 1. HEADER / NAVIGATION SECTION -->
+  <header class="header-section">
+    <div class="container">
+      <nav>
+        <div class="main-logo">
+          <img src="images/removeBGLogo.webp" alt="logo">
+          <h4>Leah Marcelino</h4>
+        </div>
+
+        <div class="link-nav-btn-container">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/about.html">About</a></li>
+            <li><a href="pages/products.html">Products</a></li>
+            <li><a href="pages/contact.html">Contacts</a></li>
+          </ul>
+
+          <div class="nav-background-btn-container">
+            <button class="nav-music-toggle" id="nav-musicToggle" aria-label="Toggle background music">
+          
+              <svg class="nav-music-icon" id="nav-musicIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+              </svg>
+
+      
+              <svg class="nav-music-icon hidden" id="nav-musicIconOff" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+                <path d="M9 9l2 2v8l-5-4H2V9h4l2.5-2"></path>
+                <path d="M11 5l2 1.6"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+      
+      <!-- Mobile Navigation -->
+      <div class="mobile-menu-container">
+        <div class="main-logo">
+          <img src="images/removeBGLogo.webp" alt="logo">
+          <h4>Leah Marcelino</h4>
+        </div>
+        <div class="spacer"></div>
+        <div class="hamburger-svg">
+          <img class="hamburger-icon" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='4' y1='6' x2='20' y2='6'/><line x1='4' y1='12' x2='20' y2='12'/><line x1='4' y1='18' x2='20' y2='18'/></svg>" alt="Menu">
+        </div>
+        <div class="menu">
+         <!-- Close Button -->
+          <div class="menu-close-btn">&times;</div>
+
+          <!-- Header / Brand -->
+          <div class="menu-header">
+            <img src="images/removeBGLogo.png" alt="logo" class="menu-logo">
+            <span class="menu-brand-name">Leah Marcelino</span>
+          </div>
+
+          <!-- Navigation Links -->
+          <nav class="menu-links">
+            <a href="index.html" class="menu-item">
+              <div class="item-left">
+                <!-- Home Icon (SVG) -->
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Home</span>
+              </div>
+              <span class="arrow">&rsaquo;</span>
+            </a>
+
+            <a href="pages/about.html" class="menu-item">
+              <div class="item-left">
+                <!-- About Icon (SVG) -->
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>About</span>
+              </div>
+              <span class="arrow">&rsaquo;</span>
+            </a>
+
+            <a href="pages/products.html" class="menu-item">
+              <div class="item-left">
+                <!-- Products/Cupcake Icon (SVG) -->
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7"></path>
+                  <path d="M4 12c0-2.5 2-4 4-4s3 2 4 2 2-2 4-2 4 1.5 4 4"></path>
+                  <path d="M12 4v4"></path>
+                </svg>
+                <span>Products</span>
+              </div>
+              <span class="arrow">&rsaquo;</span>
+            </a>
+
+            <a href="pages/contact.html" class="menu-item">
+              <div class="item-left">
+                <!-- Contact Icon (SVG) -->
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Contact</span>
+              </div>
+              <span class="arrow">&rsaquo;</span>
+            </a>
+          </nav>
+
+          <!-- Footer Decorative Section -->
+          <div class="menu-footer">
+            <div class="divider">
+              <span class="leaf-icon">🌿</span>
+            </div>
+            <p class="tagline">FRESHLY BAKED<br>WITH LOVE</p>
+            <span class="heart-icon">♡</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION -->
+  <section class="hero-section">
+      <div class="background-btn-container">
+       <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
+      
+          <svg class="music-icon" id="musicIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+
+  
+          <svg class="music-icon hidden" id="musicIconOff" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+            <path d="M9 9l2 2v8l-5-4H2V9h4l2.5-2"></path>
+            <path d="M11 5l2 1.6"></path>
+          </svg>
+        </button>
+      </div>
+    <div class="container">
+      <div class="title-container">
+        <div class="house-accent">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D4A3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </div>
+        <div class="title">
+          <span class="cwl">Crafted with love</span>
+          <span class="dR">Deliciously Round</span>
+        </div>
+        <div class="sub-title">
+          <div class="sub-container">
+            <p class="headerSub">
+              From crispy ring biscuits and fluffy donuts to soft, authentic steamed puto—baked fresh daily for your meryenda.
+            </p>
+          </div>
+          <div class="header-btn-container">
+            <a href="https://m.me/leah.marcelino.900" target="_blank" rel="noopener noreferrer" class="btn-hero-messenger">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.45 5.516 3.716 7.218V22l3.351-1.84c.937.26 1.928.402 2.933.402 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.066 12.427l-2.55-2.72-4.975 2.72 5.474-5.812 2.613 2.72 4.912-2.72-5.474 5.812z"/>
+              </svg>
+              <span class="chatMe">Chat Me</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="subBG">
+          <img src="images/deciouslyRound.webp" alt="logo">
+       </div>
+  </section>
+
+  <!-- 3. MY STORY SECTION -->
+  <section class="story-section">
+    <div class="container hero-container">
+      <div class="imgDesign-container">
+        <img class="leavesDesign" src="images/leavesBG6.png" alt="">
+        <div class="hero-image">
+          <img src="images/ttaLeahsPro.webp" alt="leahsPic"/>
+        </div>
+        <img class="leavesDesign2" src="images/leavesBG5.png" alt="">
+      </div>
+
+      <div class="myStory-container">
+        <div class="divider-title">
+          <h2><span>MY</span> STORY</h2>
+          <div class="heart">♥</div>
+        </div>
+        <div class="story-content">
+          <h1 class="main-heading">Made with Love</h1>
+          <p class="description">
+            Every batch is made with care, using simple and quality ingredients — because we believe that great taste brings people together.
+          </p>
+          <a href="pages/about.html" class="read-more-btn">
+            Read More <span class="arrow">&rsaquo;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURES SECTION -->
+  <section class="features-section">
+    <div class="container features-container">
+      <div class="feature-item">
+        <div class="icon-circle"><i class="fa-solid fa-seedling"></i></div>
+        <h3>Freshly Baked</h3>
+        <p>Made daily with quality ingredients.</p>
+      </div>
+
+      <div class="feature-item">
+        <div class="icon-circle"><i class="fa-regular fa-heart"></i></div>
+        <h3>Homemade Goodness</h3>
+        <p>A taste of love in every bite.</p>
+      </div>
+
+      <div class="feature-item">
+        <div class="icon-circle"><i class="fa-regular fa-face-smile"></i></div>
+        <h3>Perfect for Merienda</h3>
+        <p>Sweet, soft and satisfying.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FOOTER SECTION -->
+  <footer class="footer-section">
+    <div class="container footer-container">
+      <div class="footer-logo">
+        <div class="logo-icon"><i class="fa-solid fa-house-chimney"></i></div>
+        <div class="logo-text">
+          <span class="brand-title">CRAFTED WITH LOVE</span>
+          <div class="tagline-divider"><span>♥</span></div>
+          <span class="brand-subtitle">Made with Care</span>
+        </div>
+      </div>
+
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+        <li><a href="pages/products.html">Products</a></li>
+      </ul>
+
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/leah.marcelino.900" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="tel:+63 9497377451" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; All Rights Reserved Leah Marcelino</p>
+    </div>
+  </footer>
+
+  <script src="index.js" defer></script>
+</body>
+</html>
